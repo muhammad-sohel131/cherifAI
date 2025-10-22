@@ -1,4 +1,5 @@
 import Header from "@/components/layout/sitelayout/Header";
+import Footer from "./Footer";
 
 const Sitelayout = ({ children }) => {
     return (
@@ -7,6 +8,7 @@ const Sitelayout = ({ children }) => {
             <div className="py-16">
                 {children}
             </div>
+            <Footer />
         </div>
     )
 }

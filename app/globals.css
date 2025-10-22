@@ -6,7 +6,7 @@
   --primaryBlackforhover: #080b20;
   --primaryWhite: #ffffff;
   --primaryWhiteForHover: rgb(226, 226, 226);
-  --borderColor: #303030;
+  --borderColor: #3c3c3c;
 }
 
 
@@ -36,6 +36,14 @@ body {
 @layer components {
   .bg {
     background: var(--primaryBlack) !important;
+  }
+
+  .brandColor {
+    color: var(--brandColor) !important;
+  }
+
+  .brandBg {
+    background: var(--brandColor) !important;
   }
 
   .color {

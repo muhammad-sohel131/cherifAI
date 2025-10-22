@@ -1,5 +1,6 @@
 import Container from "@/components/layout/sitelayout/Container";
 import Link from "next/link";
+import { BsStars } from "react-icons/bs";
 
 const Hero = () => {
     return (
@@ -21,7 +22,13 @@ const Hero = () => {
                 <div className="flex items-center h-screen w-full justify-center text-white z-20 text-2xl font-bold
                 ">
                     <div className=" text-center space-y-6 translate-y-[-20%]">
-                        <h2 className="text-gray-300">CherifAI</h2>
+                        <div className="flex items-center justify-center w-full">
+                            <h2 className="text-gray-300 text-sm font-normal border border-gray-500 rounded-full px-4 py-1 w-fit flex items-center">
+                                <BsStars className="brandColor text-lg" />
+                                <span>&nbsp; Powered by
+                                    CherifAI</span>
+                            </h2>
+                        </div>
                         <h1 className="text-gray-100 text-4xl sm:text-5xl font-bold leading-tight">
                             AI-Powered Real Estate Assistant <br className="hidden sm:block" />
                             <span className="">for Smarter, Faster Deals</span>

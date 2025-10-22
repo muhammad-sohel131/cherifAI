@@ -39,7 +39,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <button className="btn">Login</button>
+            <Link href="/auth/signin" className="btn">Login</Link>
           </nav>
 
           {/* Mobile Menu Toggle */}

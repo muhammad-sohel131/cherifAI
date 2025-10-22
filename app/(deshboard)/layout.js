@@ -1,9 +1,13 @@
- function DeshboardLayout({ children }) {
-  return (
-   <div>
-        {children}
-   </div>
-  )
+import DashboardLayout from "@/components/layout/deshboardlayout/DashboardLayout";
+
+function DeshboardLayout({ children }) {
+     return (
+          <div>
+               <DashboardLayout>
+                    {children}
+               </DashboardLayout>
+          </div>
+     )
 }
 
 
