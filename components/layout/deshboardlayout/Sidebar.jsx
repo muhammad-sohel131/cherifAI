@@ -1,6 +1,10 @@
 import logo from "@/public/logo_full.png";
 import Link from "next/link";
 
+import Spiner from "@/components/ui/dashboard/Spiner";
+import deleteCookie from "@/utils/deleteCookie";
+import getToken from "@/utils/getTokenFromCookie";
+import { createData } from "@/utils/reqres";
 import {
     Bot,
     Building2,
@@ -16,8 +20,9 @@ import {
     X
 } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
+import { toast } from "react-toastify";
 
 
 function Sidebar({ open, onClose }) {
@@ -25,7 +30,8 @@ function Sidebar({ open, onClose }) {
 
 
     const pathname = usePathname();
-
+    const router = useRouter();
+    const [isLoading, setisLoading] = useState(false);
     const items = useMemo(
         () => [
             { icon: PanelsTopLeft, label: "Dashboard", href: "/dashboard" },
@@ -41,6 +47,41 @@ function Sidebar({ open, onClose }) {
         ],
         []
     );
+
+
+
+    //get cookie token from cookie
+    const token = getToken();
+
+
+
+    //handle logout function is here
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        setisLoading(true);
+
+        try {
+            const res = await createData('api/auth/logout', {}, token);
+
+            deleteCookie('token');
+            router.push('/auth/signin');
+
+
+        } catch (error) {
+            toast.warn(error.message || 'Something went wrong');
+        } finally {
+            setisLoading(false);
+        }
+
+
+
+    }
+
+
+
+
+
+
 
 
 
@@ -83,6 +124,17 @@ function Sidebar({ open, onClose }) {
                         </Link>
                     ))}
                 </nav>
+
+
+                <div className="absolute bottom-20 left-5 w-fit">
+                    <button onClick={(e) => { handleLogout(e) }} className="brandBg rounded-lg px-3 w-[190px] py-2 text-md font-semibold text-neutral-950 hover:bg-sky-400 cursor-pointer flex items-center justify-center  gap-2">
+
+                        {isLoading && <Spiner />}
+
+                        Logout
+                    </button>
+                </div>
+
             </aside>
         </>
     );
