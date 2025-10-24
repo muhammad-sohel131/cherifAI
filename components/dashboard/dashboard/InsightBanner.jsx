@@ -13,10 +13,10 @@ function InsightBanner({
     secondary = "Learn More",
 }) {
     return (
-        <Card className="mb-6 border-teal-900/40 bg-gradient-to-b from-neutral-900/70 to-neutral-900/30">
+        <Card className="mb-6 bg-neutral-800">
             <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3">
-                    <div className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 ring-1 ring-inset ring-neutral-800">
+                    <div className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 ring-1 ring-inset ring-neutral-800 myborder">
                         <Zap className="h-5 w-5 brandColor" />
                     </div>
                     <div>
@@ -26,7 +26,7 @@ function InsightBanner({
                 </div>
                 <div className="flex shrink-0 gap-2">
                     <button className="rounded-lg brandBg px-3 py-2 text-sm font-semibold text-neutral-950 hover:bg-sky-400">{primary}</button>
-                    <button className="rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm font-semibold hover:border-neutral-700 hover:bg-neutral-800">{secondary}</button>
+                    <button className="rounded-lg myborder bg-neutral-900 px-3 py-2 text-sm font-semibold hover:border-neutral-700 hover:bg-neutral-800">{secondary}</button>
                 </div>
             </div>
         </Card>

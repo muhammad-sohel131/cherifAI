@@ -1,4 +1,5 @@
 import Container from "@/components/layout/sitelayout/Container";
+import { Sparkles } from "lucide-react";
 import Link from "next/link";
 import { BsStars } from "react-icons/bs";
 
@@ -25,8 +26,7 @@ const Hero = () => {
                         <div className="flex items-center justify-center w-full">
                             <h2 className="text-gray-300 text-sm font-normal border border-gray-500 rounded-full px-4 py-1 w-fit flex items-center">
                                 <BsStars className="brandColor text-lg" />
-                                <span>&nbsp; Powered by
-                                    CherifAI</span>
+                                <span>&nbsp; Powered by <span className="brandColor">CherifAI</span></span>
                             </h2>
                         </div>
                         <h1 className="text-gray-100 text-4xl sm:text-5xl font-bold leading-tight">
@@ -43,10 +43,11 @@ const Hero = () => {
                         <div className="flex justify-center md:justify-start gap-4">
                             <div className="flex w-full items-center justify-center">
                                 <Link
-                                    href="/signup"
-                                    className="btn mt-3 px-4 py-2 rounded-lg font-semibold shadow transition"
+                                    href="/dashboard"
+                                    className="btn mt-3 px-4 py-2 rounded-lg font-semibold shadow brandBg transition text-[17px] flex items-center gap-2"
                                 >
-                                    Get Started Free
+                                    <Sparkles className="h-4 w-4" />
+                                    Get Started
                                 </Link>
                             </div>
                         </div>

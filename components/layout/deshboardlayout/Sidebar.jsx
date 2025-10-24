@@ -94,7 +94,7 @@ function Sidebar({ open, onClose }) {
                 onClick={onClose}
             />
             <aside
-                className={`fixed top-0 h-screen inset-y-0 left-0 z-50 w-72 transform myborderRight bg-neutral-950 p-3 transition-transform duration-200 md:sticky md:top-14 md:z-auto md:w-[260px] md:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"
+                className={`fixed top-0 h-screen inset-y-0 left-0 z-50 w-72 transform myborderRight bg-neutral-900 p-3 transition-transform duration-200 md:sticky md:top-14 md:z-auto md:w-[260px] md:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"
                     }`}
                 aria-hidden={!open}
             >
@@ -120,7 +120,7 @@ function Sidebar({ open, onClose }) {
                                 <Icon className="h-6 w-6 brandColor" />
                                 <span className="text-lg font-normal">{label}</span>
                             </span>
-                            <ChevronRight className="h-4 w-4 text-neutral-600" />
+                            <ChevronRight className="h-4 w-4 brandColor" />
                         </Link>
                     ))}
                 </nav>

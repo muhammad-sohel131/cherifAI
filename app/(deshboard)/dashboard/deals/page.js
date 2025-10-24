@@ -55,7 +55,7 @@ export default function DealAnalyzerPage() {
 
     return (
         <main className="min-h-screen bg-neutral-950 text-neutral-100">
-            <div className="mx-auto max-w-6xl px-4 py-6">
+            <div className="px-4 py-6">
                 {/* Title */}
                 <div className="mb-4 flex items-center gap-2">
                     <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 ring-1 ring-inset ring-neutral-800">
@@ -68,7 +68,7 @@ export default function DealAnalyzerPage() {
                 </p>
 
                 {/* Search bar */}
-                <div className="mb-6 flex w-full items-center gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-2">
+                <div className="mb-6 flex w-full items-center gap-3 rounded-2xl myborder bg-neutral-900 p-2">
                     <div className="relative flex-1">
                         <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
                         <input
@@ -183,7 +183,7 @@ export default function DealAnalyzerPage() {
 
 /* ------------------------------- Building blocks ------------------------------ */
 function Card({ className = "", children }) {
-    return <div className={`rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ${className}`}>{children}</div>;
+    return <div className={`rounded-2xl myborder bg-neutral-800 p-4 shadow-lg ${className}`}>{children}</div>;
 }
 
 function Tile({ icon, title, value, hint }) {
@@ -205,7 +205,7 @@ function Tile({ icon, title, value, hint }) {
 
 function ListRow({ label, value, positive, negative }) {
     return (
-        <div className="mb-3 rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+        <div className="mb-3 rounded-xl myborder bg-neutral-900 px-4 py-3">
             <div className="flex items-center justify-between text-sm">
                 <span className="text-neutral-300">{label}</span>
                 <span className={`${positive ? "text-emerald-400" : negative ? "text-red-400" : "text-neutral-200"}`}>{value}</span>
@@ -216,7 +216,7 @@ function ListRow({ label, value, positive, negative }) {
 
 function CompCard({ addr, price, roi }) {
     return (
-        <div className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4">
+        <div className="rounded-2xl myborder bg-neutral-900 p-4">
             <div className="text-neutral-300">{addr}</div>
             <div className="mt-2 text-xl font-extrabold">{money(price)}</div>
             <div className="mt-1 text-xs text-neutral-400">Price</div>

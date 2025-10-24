@@ -48,7 +48,7 @@ export default function MortgageCalculator() {
         <section className="w-full bg-neutral-950 text-neutral-100">
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 py-6 lg:grid-cols-2">
                 {/* ---------------- Loan Details ---------------- */}
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ring-1 ring-inset ring-neutral-800 sticky top-[100px] h-fit">
+                <div className="rounded-2xl myborder bg-neutral-900 p-4 shadow-lg ring-1 ring-inset ring-neutral-800 sticky top-[100px] h-fit">
                     <Header icon={<Calculator className="h-5 w-5 brandColor" />} title="Loan Details" />
 
                     <Field label="Purchase Price" help="Home purchase price">
@@ -104,7 +104,7 @@ export default function MortgageCalculator() {
                 {/* ---------------- Right Summary + Charts ---------------- */}
                 <div className="flex flex-col gap-6">
                     {/* Summary */}
-                    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
+                    <div className="rounded-2xl myborder bg-neutral-900 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
                         <div className="text-center">
                             <div className="text-sm text-neutral-400">Monthly Payment</div>
                             <div className="mt-1 text-4xl font-extrabold brandColor">{fmt(results.monthlyTotal)}</div>
@@ -117,7 +117,7 @@ export default function MortgageCalculator() {
                             <KPI label="Total Paid" value={fmt(results.totalPaid)} />
                         </div>
 
-                        <details className="mt-4 rounded-xl border border-neutral-800 bg-neutral-900/60">
+                        <details className="mt-4 rounded-xl myborder bg-neutral-950">
                             <summary className="cursor-pointer select-none px-3 py-2 text-sm font-semibold">Cost Breakdown</summary>
                             <div className="grid gap-3 px-3 pb-3 text-sm text-neutral-300 sm:grid-cols-2">
                                 <Row label="Principal & Interest" value={fmt(results.monthlyPI)} />
@@ -129,7 +129,7 @@ export default function MortgageCalculator() {
                     </div>
 
                     {/* Chart + Export */}
-                    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
+                    <div className="rounded-2xl myborder bg-neutral-900 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
                         <div className="mb-2 flex items-center justify-between">
                             <div className="text-base font-semibold">Payment Breakdown Over Time</div>
                             <button onClick={() => exportCSV(results.schedule)} className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-xs font-semibold hover:border-neutral-700 hover:bg-neutral-800">
@@ -153,7 +153,7 @@ export default function MortgageCalculator() {
                     </div>
 
                     {/* Annual table */}
-                    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
+                    <div className="rounded-2xl myborder bg-neutral-900 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
                         <div className="text-base font-semibold">Amortization Schedule by Calendar Year</div>
                         <div className="mt-3 overflow-x-auto">
                             <table className="min-w-full text-left text-sm">
@@ -225,7 +225,7 @@ function Input({ prefix, rightIcon, className = "", ...props }) {
             <input
                 {...props}
                 inputMode="decimal"
-                className={`w-full rounded-xl border border-neutral-800 bg-neutral-950 px-3 py-2 text-sm outline-none transition placeholder:text-neutral-500 focus:border-neutral-600 ${prefix ? "pl-7" : ""
+                className={`w-full rounded-xl myborder bg-neutral-950 px-3 py-2 text-sm outline-none transition placeholder:text-neutral-500 focus:border-neutral-600 ${prefix ? "pl-7" : ""
                     } ${rightIcon ? "pr-9" : ""}`}
             />
             {rightIcon && (
@@ -237,7 +237,7 @@ function Input({ prefix, rightIcon, className = "", ...props }) {
 
 function KPI({ label, value }) {
     return (
-        <div className="rounded-xl border border-neutral-800 bg-neutral-900/60 p-3">
+        <div className="rounded-xl myborder bg-neutral-950 p-3">
             <div className="text-xs text-neutral-400">{label}</div>
             <div className="mt-1 font-semibold">{value}</div>
         </div>

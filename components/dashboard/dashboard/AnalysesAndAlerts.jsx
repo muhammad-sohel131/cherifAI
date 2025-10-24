@@ -60,7 +60,7 @@ export default function AnalysesAndAlerts({ analyses, alerts }) {
         <section className="w-full bg-neutral-950 text-neutral-100">
             <div className="mx-auto grid grid-cols-1 gap-6 py-6 md:grid-cols-2 md:gap-8">
                 {/* Recent Analyses */}
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
+                <div className="rounded-2xl myborder bg-neutral-800 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
                     <div className="mb-3 flex items-center gap-2">
                         <ShieldCheck className="h-5 w-5 text-teal-300" />
                         <h3 className="text-lg font-semibold">Recent Analyses</h3>
@@ -76,7 +76,7 @@ export default function AnalysesAndAlerts({ analyses, alerts }) {
                 </div>
 
                 {/* Market Alerts */}
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
+                <div className="rounded-2xl myborder bg-neutral-800 p-4 shadow-lg ring-1 ring-inset ring-neutral-800">
                     <div className="mb-3 flex items-center justify-between">
                         <div className="flex items-center gap-2">
                             <AlertTriangle className="h-5 w-5 text-yellow-300" />
@@ -91,7 +91,7 @@ export default function AnalysesAndAlerts({ analyses, alerts }) {
                         )}
                     </div>
 
-                    <button className="mt-4 w-full rounded-xl border border-neutral-800 bg-neutral-900/70 px-4 py-2 text-sm font-semibold text-neutral-200 transition hover:border-neutral-700 hover:bg-neutral-800">
+                    <button className="mt-4 w-full rounded-xl myborder border-neutral-900 bg-neutral-900/70 px-4 py-2 text-sm font-semibold text-neutral-200 transition hover:border-neutral-700 hover:bg-neutral-800">
                         View All Alerts
                     </button>
                 </div>
@@ -100,10 +100,13 @@ export default function AnalysesAndAlerts({ analyses, alerts }) {
     );
 }
 
+
+
+
 /* ------------------------------- Analysis Item ------------------------------- */
 function AnalysisItem({ title, time }) {
     return (
-        <div className="flex items-center justify-between rounded-xl border border-neutral-800 bg-neutral-900/60 px-4 py-3 shadow-inner">
+        <div className="flex items-center justify-between rounded-xl myborder bg-neutral-900/60 px-4 py-3 shadow-inner">
             <div className="flex items-center gap-3">
                 <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 ring-1 ring-inset ring-neutral-800">
                     <MapPin className="h-4 w-4 text-teal-300" />
@@ -123,7 +126,7 @@ function AlertCard({ color = "emerald", icon: Icon = Info, title, desc, cta }) {
     const theme = getTheme(color);
     return (
         <div
-            className={`rounded-2xl border p-4 shadow-md ${theme.bg} ${theme.border}`}
+            className={`rounded-2xl myborder p-4 shadow-md ${theme.bg} ${theme.border}`}
             role="region" aria-label={title}
         >
             <div className="flex items-start gap-3">

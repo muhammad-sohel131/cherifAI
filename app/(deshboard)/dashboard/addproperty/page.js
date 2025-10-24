@@ -47,7 +47,7 @@ export default function AddPropertyPage() {
 
     return (
         <main className="min-h-screen bg-neutral-950 text-neutral-100">
-            <div className="myborder px-4 py-8">
+            <div className="myborder px-4 py-8 bg-neutral-800 rounded-lg">
                 {/* Header */}
                 <div className="mb-6 flex items-center gap-2 pb-4">
                     <div className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900 ring-1 ring-inset ring-neutral-800">
@@ -138,7 +138,7 @@ export default function AddPropertyPage() {
                         </div>
 
                         {form.files.length > 0 && (
-                            <ul className="mt-3 divide-y divide-neutral-800 rounded-xl border border-neutral-800">
+                            <ul className="mt-3 divide-y divide-neutral-800 rounded-xl myborder">
                                 {form.files.map((f, i) => (
                                     <li key={i} className="flex items-center justify-between px-3 py-2 text-sm">
                                         <span className="truncate text-neutral-300">{f.name}</span>
@@ -159,7 +159,7 @@ export default function AddPropertyPage() {
                     <div className="flex items-center justify-end gap-3 border-t border-neutral-800 pt-4">
                         <button
                             type="button"
-                            className="rounded-xl border border-neutral-800 bg-neutral-900 px-4 py-2 text-sm font-semibold text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
+                            className="rounded-xl myborder bg-neutral-900 px-4 py-2 text-sm font-semibold text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
                             onClick={() => setForm({ title: "", address: "", zillow: "", purchasePrice: "", currentValue: "", purchaseDate: "", files: [] })}
                         >
                             Cancel
@@ -196,7 +196,7 @@ function Field({ label, help, children }) {
 
 function Input({ prefix, rightIcon, className = "", ...props }) {
     return (
-        <div className={`relative ${className}`}>
+        <div className={`relative myborder ${className}`}>
             {prefix && (
                 <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-neutral-500">{prefix}</span>
             )}

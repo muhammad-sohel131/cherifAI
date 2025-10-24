@@ -79,11 +79,11 @@ export default function MarketWatchPage() {
     const portfolio = { value: 1250000, yoy: "+9.2% YoY", marketGrowth: "11.5%", perf: "Below", delta: "2.3% behind market" };
 
     return (
-        <main className="min-h-screen bg-neutral-950 text-neutral-100">
+        <main className="min-h-screen bg-neutral-800 myborder rounded-lg text-neutral-100">
             <div className="mx-auto max-w-6xl px-4 py-6">
                 {/* Title */}
                 <div className="mb-4 flex items-center gap-2">
-                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 ring-1 ring-inset ring-neutral-800">
+                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg myborder bg-neutral-900 ring-1 ring-inset ring-neutral-800">
                         <TrendingUp className="h-4 w-4 brandColor" />
                     </div>
                     <h1 className="text-2xl font-extrabold tracking-tight">Market Watch</h1>
@@ -91,7 +91,7 @@ export default function MarketWatchPage() {
                 <p className="mb-4 text-sm text-neutral-300">Live market data, trends, and investment opportunities</p>
 
                 {/* Search bar */}
-                <div className="mb-6 flex w-full flex-col gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-3 md:flex-row md:items-center">
+                <div className="mb-6 flex w-full flex-col gap-3 rounded-2xl myborder bg-neutral-800 p-3 md:flex-row md:items-center">
                     <input
                         className="flex-1 rounded-xl border border-neutral-800 bg-neutral-950 px-3 py-2 text-sm outline-none placeholder:text-neutral-500 focus:border-neutral-600"
                         placeholder="Enter city or ZIP"
@@ -120,14 +120,14 @@ export default function MarketWatchPage() {
 
                 {/* Map & Trending */}
                 <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-                    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4">
+                    <div className="rounded-2xl myborder bg-neutral-900 p-4">
                         <div className="mb-3 flex items-center justify-between">
                             <h3 className="text-base font-semibold">Market Heat Map</h3>
-                            <button className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-xs hover:border-neutral-700 hover:bg-neutral-800">
+                            <button className="inline-flex items-center gap-2 rounded-lg myborder bg-neutral-900 px-3 py-1.5 text-xs hover:border-neutral-700 hover:bg-neutral-800">
                                 <SlidersHorizontal className="h-4 w-4" /> Filters
                             </button>
                         </div>
-                        <div className="flex h-72 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950/70">
+                        <div className="flex h-72 items-center justify-center rounded-xl myborder bg-neutral-950">
                             <div className="text-center text-neutral-400">
                                 <MapPin className="mx-auto mb-2 h-8 w-8 brandColor" />
                                 <div className="font-medium">Interactive map coming soon</div>
@@ -136,11 +136,11 @@ export default function MarketWatchPage() {
                         </div>
                     </div>
 
-                    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4">
+                    <div className="rounded-2xl myborder bg-neutral-900 p-4">
                         <h3 className="mb-3 text-base font-semibold">Trending ZIP Codes</h3>
                         <div className="space-y-3">
                             {zips.map((z) => (
-                                <div key={z.zip} className="flex items-start justify-between rounded-xl border border-neutral-800 bg-neutral-950/60 p-3">
+                                <div key={z.zip} className="flex items-start justify-between rounded-xl myborder bg-neutral-950 p-3">
                                     <div>
                                         <div className="font-semibold">{z.zip}</div>
                                         <div className="text-xs text-neutral-400">{z.city}</div>
@@ -161,7 +161,7 @@ export default function MarketWatchPage() {
                 </div>
 
                 {/* Comparison banner */}
-                <div className="mt-8 rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-100/5 to-neutral-100/0 p-5">
+                <div className="mt-8 rounded-2xl myborder bg-gradient-to-b from-neutral-950 to-neutral-950 p-5">
                     <h3 className="mb-3 text-base font-semibold">Compare My Portfolio to Market</h3>
                     <div className="grid gap-6 md:grid-cols-3">
                         <div>
@@ -189,7 +189,7 @@ export default function MarketWatchPage() {
 /* ----------------------------- Pieces ----------------------------- */
 function CardStat({ icon, label, value, hint }) {
     return (
-        <div className="rounded-xl border border-neutral-800 bg-neutral-950/60 p-3">
+        <div className="rounded-xl myborder bg-neutral-950 p-3">
             <div className="flex items-center gap-2 text-xs text-neutral-400">
                 {icon}
                 {label}
@@ -202,7 +202,7 @@ function CardStat({ icon, label, value, hint }) {
 
 function CityCard({ c }) {
     return (
-        <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-4">
+        <div className="rounded-2xl myborder bg-neutral-900 p-4">
             <div className="mb-3">
                 <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 brandColor" />

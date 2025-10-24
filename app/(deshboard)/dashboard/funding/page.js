@@ -78,11 +78,11 @@ export default function FundingFinderPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-neutral-950 text-neutral-100">
+        <main className="min-h-screen bg-neutral-800 text-neutral-100 myborder rounded-lg">
             <div className="mx-auto max-w-6xl px-4 py-8">
                 {/* Header */}
                 <div className="mb-6 flex items-center gap-2">
-                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 ring-1 ring-inset ring-neutral-800">
+                    <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 ring-1 ring-inset ring-neutral-800 myborder">
                         <DollarSign className="h-4 w-4 brandColor" />
                     </div>
                     <h1 className="text-2xl font-extrabold tracking-tight">Funding Finder</h1>
@@ -150,7 +150,7 @@ export default function FundingFinderPage() {
                 </div>
 
                 {/* ROI Comparison */}
-                <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5">
+                <div className="mt-10 rounded-2xl myborder bg-neutral-900 p-5">
                     <h3 className="mb-4 flex items-center gap-2 text-base font-semibold">
                         <DollarSign className="h-5 w-5 brandColor" /> ROI Comparison
                     </h3>
@@ -158,7 +158,7 @@ export default function FundingFinderPage() {
                         {loans.map((loan, i) => (
                             <div key={i}>
                                 <div className="mb-1 text-sm text-neutral-300">{loan.title}</div>
-                                <div className="relative h-6 rounded-full bg-neutral-800">
+                                <div className="relative h-6 rounded-full bg-neutral-800 myborder">
                                     <div
                                         className="absolute left-0 top-0 h-6 rounded-full brandBg text-right pr-2 text-xs font-semibold text-neutral-900 flex items-center justify-end"
                                         style={{ width: `${loan.roi * 2}%` }}
@@ -189,7 +189,7 @@ function Input(props) {
     return (
         <input
             {...props}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm outline-none focus:border-neutral-500"
+            className="w-full rounded-lg myborder bg-neutral-900 px-3 py-2 text-sm outline-none focus:border-neutral-500"
         />
     );
 }
@@ -198,14 +198,14 @@ function Select(props) {
     return (
         <select
             {...props}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm outline-none focus:border-neutral-500"
+            className="w-full rounded-lg myborder bg-neutral-900 px-3 py-2 text-sm outline-none focus:border-neutral-500"
         />
     );
 }
 
 function LoanCard({ loan }) {
     return (
-        <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5">
+        <div className="rounded-2xl myborder bg-neutral-900 p-5">
             <div className="flex items-start justify-between">
                 <div>
                     <h3 className="text-lg font-semibold">{loan.title}</h3>

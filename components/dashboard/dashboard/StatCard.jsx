@@ -6,7 +6,7 @@ import Card from "./Card";
 
 export default function StatCard({ icon: Icon, title, value, hint, actionLabel }) {
     return (
-        <Card className="bg-gradient-to-b from-neutral-900/60 to-neutral-900/30">
+        <Card className="bg-neutral-800">
             <div className="flex items-start justify-between">
                 <div>
                     <div className="text-sm text-neutral-300">{title}</div>
@@ -16,7 +16,7 @@ export default function StatCard({ icon: Icon, title, value, hint, actionLabel }
                         <Activity className="h-3.5 w-3.5 brandColor" /> {actionLabel}
                     </button>
                 </div>
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 ring-1 ring-inset ring-neutral-800">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 myborder ring-1 ring-inset ring-neutral-800">
                     {Icon ? <Icon className="h-5 w-5 brandColor" /> : null}
                 </div>
             </div>
