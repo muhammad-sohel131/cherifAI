@@ -2,11 +2,13 @@
 
 import Spiner from '@/components/ui/dashboard/Spiner';
 import logo from '@/public/logo_full-Transparent.png';
+import Cookies from "js-cookie";
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+
 
 export default function SignInPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -36,15 +38,9 @@ export default function SignInPage() {
             const data = await res.json();
 
             // cokkie set
-            document.cookie = `token=${data?.token}; path=/;`;
+            Cookies.set("token", data?.token, { path: "/", secure: true, sameSite: "Lax" });
 
-            toast.success("Signed in successfully!");
-
-            setTimeout(() => {
-                router.push("/dashboard");
-            }, 800);
-
-
+            router.push("/dashboard");
 
 
         } catch (err) {
