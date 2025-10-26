@@ -96,4 +96,17 @@ body {
     background-size: "100% 100%",
   }
 
+
+  .tooltipArraow::before {
+    content: '';
+    width: 25px;
+    height: 25px;
+    background: var(--primaryWhite);
+    position: absolute;
+    top: 50px;
+    right: -7px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: -1;
+  }
+
 }

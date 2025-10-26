@@ -16,6 +16,7 @@ export default function SignInPage() {
 
 
     async function onSubmit(e) {
+
         e.preventDefault();
         setIsLoading(true);
 
@@ -40,6 +41,7 @@ export default function SignInPage() {
             console.log(data);
 
             router.push("/dashboard");
+
         } catch (err) {
             toast(err.message || "Something went wrong");
         } finally {
@@ -103,7 +105,7 @@ export default function SignInPage() {
                                 </p>
                             </div>
 
-                            <form onSubmit={onSubmit} className="space-y-5">
+                            <form className="space-y-5">
                                 {/* Email */}
                                 <div className="group">
                                     <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
@@ -189,7 +191,7 @@ export default function SignInPage() {
 
                                 {/* Submit */}
                                 <button
-                                    type="submit"
+                                    onClick={(e) => { onSubmit(e) }}
                                     disabled={isLoading}
                                     className="group relative inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 font-semibold text-white transition focus:outline-none disabled:opacity-60 brandBg cursor-pointer"
                                 >

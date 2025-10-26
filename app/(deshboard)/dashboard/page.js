@@ -18,14 +18,11 @@ import {
 
 
 
+export const dynamic = "force-dynamic";
+
 
 
 const Deshboard = () => {
-
-
-
-
-
 
 
 

@@ -1,12 +1,17 @@
 'use client';
 
+import Spiner from "@/components/ui/dashboard/Spiner";
 import logo from "@/public/logo_full.png";
+import deleteCookie from "@/utils/deleteCookie";
 import getToken from "@/utils/getTokenFromCookie";
+import { createData } from "@/utils/reqres";
 import verifyJWT from "@/utils/verifyJWT";
 import { Menu, User2, X } from "lucide-react"; // modern icons
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import Container from "./Container";
 
 export default function Header() {
@@ -35,11 +40,42 @@ export default function Header() {
 
 
 
-  console.log(logedUser);
+
+  const [isLoading, setisLoading] = useState(false);
+  const router = useRouter();
+
+
+  //get cookie token from cookie
+  const token = getToken();
+
+  //handle logout function is here
+  const handleLogout = async (e) => {
+
+    e.preventDefault();
+    setisLoading(true);
+
+    try {
+      const res = await createData('api/auth/logout', {}, token);
+
+      deleteCookie('token');
+      router.push('/auth/signin');
+
+
+    } catch (error) {
+      toast.warn(error.message || 'Something went wrong');
+    } finally {
+      setisLoading(false);
+    }
+
+
+
+  }
+
 
 
   return (
-    <header className="w-full shadow-sm fixed top-0 left-0 z-50 bg overflow-hidden myborderBottom bg color">
+    <header className="w-full shadow-sm fixed top-0 left-0 z-50 bg myborderBottom bg color">
+      <ToastContainer />
 
       <Container>
         <div className="h-16 flex items-center justify-between">
@@ -63,13 +99,20 @@ export default function Header() {
 
             {
               logedUser ? (
-                <div className="relative">
+                <div className="relative group">
                   <button className="hidden w-[35px] h-[35px] border rounded-full border-2 border-gray-100 bg-neutral-900  text-neutral-200 hover:bg-neutral-800 md:flex items-center justify-center cursor-pointer">
                     <User2 className="h-5 w-5" />
                   </button>
-                  <div className="absolute top-0 right-[50%] border border-red-900 w-fit px-3 h-fit">
-                    <div style={{ zIndex: "9000000000" }} className="h-[200px]"></div>
 
+                  <div className="absolute top-0 right-0 h-fit w-fit mt-2 w-40 block hidden cursor-pointer group-hover:block">
+                    <div className="h-[40px] w-full transparent"></div>
+                    <div className="bg-white px-2 py-5 rounded-sm min-w-[180px] h-fit shadow-md tooltipArraow">
+                      <Link className="px-3 py-2 text-black text-lg hover:text-cyan-500 w-full" href={'/dashboard'}>Dashboard</Link>
+                      <button onClick={(e) => { handleLogout(e) }} className="px-3 py-2 mt-4 rounded-md text-black text-lg brandBg text-left hover:bg-gray-50 w-full cursor-pointer flex items-center gap-2" >
+                        {isLoading && <Spiner />}
+                        <span>Logout</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -112,11 +155,19 @@ export default function Header() {
               <div className="mt-3">
                 {
                   logedUser ? (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 relative group">
                       <button className="w-[35px] h-[35px] border rounded-full border-2 border-gray-100 bg-neutral-900  text-neutral-200 hover:bg-neutral-800 flex items-center justify-center cursor-pointer">
                         <User2 className="h-5 w-5" />
                       </button>
                       <span>{logedUser.name}</span>
+
+                      <div className="absolute top-0 left-0 h-fit w-fit mt-2 w-40 block hidden cursor-pointer group-hover:block">
+                        <div className="h-[40px] w-full transparent"></div>
+                        <div className="bg-white px-2 py-5 rounded-sm min-w-[180px] h-fit shadow-md tooltipArraow">
+                          <Link className="px-3 py-2 text-black text-lg hover:text-cyan-500 w-full" href={'/dashboard'}>Dashboard</Link>
+                          <button onClick={(e) => { handleLogout(e) }} className="px-3 py-2 mt-4 rounded-md text-black text-lg brandBg text-left hover:bg-gray-50 w-full cursor-pointer" href={'/dashboard'}>Logout</button>
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <Link href="/auth/signin" className="btn">Login</Link>

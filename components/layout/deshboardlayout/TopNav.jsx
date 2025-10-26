@@ -1,4 +1,10 @@
+'use client';
+
+import Spiner from "@/components/ui/dashboard/Spiner";
 import logo from "@/public/logo_full.png";
+import deleteCookie from "@/utils/deleteCookie";
+import getToken from "@/utils/getTokenFromCookie";
+import { createData } from "@/utils/reqres";
 import {
     Bell,
     Menu,
@@ -7,10 +13,60 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function TopNav({ onMenu }) {
+
+
+
+
+    const [isLoading, setisLoading] = useState(false);
+    const router = useRouter();
+
+
+    //get cookie token from cookie
+    const token = getToken();
+
+    //handle logout function is here
+    const handleLogout = async (e) => {
+
+        e.preventDefault();
+        setisLoading(true);
+
+        try {
+            const res = await createData('api/auth/logout', {}, token);
+
+            deleteCookie('token');
+            router.push('/auth/signin');
+
+
+        } catch (error) {
+            toast.warn(error.message || 'Something went wrong');
+        } finally {
+            setisLoading(false);
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
-        <nav className="sticky top-0 z-40 w-full myborderBottom overflow-hidden bg-neutral-900 ">
+        <nav className="sticky top-0 z-40 w-full myborderBottom bg-neutral-900 ">
+            <ToastContainer />
             <div className="mx-auto flex h-14 items-center justify-between px-3 sm:px-4">
                 <div className="flex items-center gap-2">
                     <button
@@ -38,9 +94,21 @@ function TopNav({ onMenu }) {
                     </button>
 
 
-                    <button className="hidden w-[35px] h-[35px] border rounded-full border-2 border-gray-100 bg-neutral-900  text-neutral-200 hover:bg-neutral-800 md:flex items-center justify-center cursor-pointer">
-                        <User2 className="h-5 w-5" />
-                    </button>
+                    <div className="group relative">
+                        <button className="hidden w-[35px] h-[35px] border rounded-full border-2 border-gray-100 bg-neutral-900  text-neutral-200 hover:bg-neutral-800 md:flex items-center justify-center cursor-pointer">
+                            <User2 className="h-5 w-5" />
+                        </button>
+                        <div className="absolute top-0 right-0 h-fit w-fit mt-2 w-40  hidden cursor-pointer group-hover:block">
+                            <div className="h-[40px] w-full transparent"></div>
+                            <div className="bg-white px-2 py-5 rounded-sm min-w-[180px] h-fit shadow-md tooltipArraow">
+                                <Link className="px-3 py-2 text-black text-lg hover:text-cyan-500 w-full" href={'/dashboard/chat'}>CherifAI</Link>
+                                <button onClick={(e) => { handleLogout(e) }} className="px-3 py-2 mt-4 rounded-md text-black text-lg brandBg text-left hover:bg-gray-50 w-full cursor-pointer flex items-center gap-2">
+                                    {isLoading && <Spiner />}
+                                    <span>Logout</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
