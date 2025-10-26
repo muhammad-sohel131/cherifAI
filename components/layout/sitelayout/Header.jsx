@@ -1,11 +1,10 @@
 'use client';
 
 import Spiner from "@/components/ui/dashboard/Spiner";
-import logo from "@/public/logo_full.png";
-import deleteCookie from "@/utils/deleteCookie";
-import getToken from "@/utils/getTokenFromCookie";
+import logo from "@/public/logo_full-Transparent.png";
 import { createData } from "@/utils/reqres";
 import verifyJWT from "@/utils/verifyJWT";
+import Cookies from "js-cookie";
 import { Menu, User2, X } from "lucide-react"; // modern icons
 import Image from "next/image";
 import Link from "next/link";
@@ -15,8 +14,10 @@ import { toast, ToastContainer } from "react-toastify";
 import Container from "./Container";
 
 export default function Header() {
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [logedUser, setLogedUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -28,16 +29,15 @@ export default function Header() {
   useEffect(() => {
 
     const usercaller = async () => {
-      const token = getToken();
-      const lUser = await verifyJWT(token);
+      const userToken = Cookies.get("token");
+      const lUser = await verifyJWT(userToken);
+      setToken(userToken);
       setLogedUser(lUser);
     }
-    if (getToken()) {
-      usercaller();
-    }
+
+    usercaller();
 
   }, [])
-
 
 
 
@@ -45,8 +45,6 @@ export default function Header() {
   const router = useRouter();
 
 
-  //get cookie token from cookie
-  const token = getToken();
 
   //handle logout function is here
   const handleLogout = async (e) => {
@@ -57,7 +55,7 @@ export default function Header() {
     try {
       const res = await createData('api/auth/logout', {}, token);
 
-      deleteCookie('token');
+      Cookies.remove("token", { path: "/" });
       router.push('/auth/signin');
 
 

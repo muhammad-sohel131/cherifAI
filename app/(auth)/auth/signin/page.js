@@ -89,7 +89,7 @@ export default function SignInPage() {
                         alt="Sign in illustration"
                         className="mx-auto mt-10 w-60 drop-shadow-2xl"
                     />
-                    <div className="mt-10 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-white/10 backdrop-blur">
+                    <div className="mt-10 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-gray-300 text-black backdrop-blur">
                         <span className=".brandColor font-medium">Secure • Fast • Reliable</span>
                     </div>
                 </div>

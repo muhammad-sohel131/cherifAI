@@ -1,10 +1,9 @@
 'use client';
 
 import Spiner from "@/components/ui/dashboard/Spiner";
-import logo from "@/public/logo_full.png";
-import deleteCookie from "@/utils/deleteCookie";
-import getToken from "@/utils/getTokenFromCookie";
+import logo from "@/public/logo_full-Transparent.png";
 import { createData } from "@/utils/reqres";
+import Cookies from "js-cookie";
 import {
     Bell,
     Menu,
@@ -14,20 +13,27 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 function TopNav({ onMenu }) {
 
 
 
-
+    const [token, setToken] = useState(null);
     const [isLoading, setisLoading] = useState(false);
     const router = useRouter();
 
 
-    //get cookie token from cookie
-    const token = getToken();
+
+
+    useEffect(() => {
+        const userToken = Cookies.get("token");
+        setToken(userToken);
+    }, []);
+
+
+
 
     //handle logout function is here
     const handleLogout = async (e) => {
@@ -38,7 +44,7 @@ function TopNav({ onMenu }) {
         try {
             const res = await createData('api/auth/logout', {}, token);
 
-            deleteCookie('token');
+            Cookies.remove("token", { path: "/" });
             router.push('/auth/signin');
 
 

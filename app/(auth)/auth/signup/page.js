@@ -85,7 +85,7 @@ export default function SignUpPage() {
                     <Link className='flex justify-center w-full mb-8' href={'/'}>
                         <Image className='w-[120px]' src={logo} alt="logo" />
                     </Link>
-                    <h1 className="text-4xl font-bold tracking-tight">Create Your Account</h1>
+                    <h1 className="text-4xl font-bold text-white tracking-tight">Create Your Account</h1>
                     <p className="mt-4 text-white/80">
                         Join the community — learn faster, track progress, and unlock achievements.
                     </p>
@@ -94,7 +94,7 @@ export default function SignUpPage() {
                         alt="Sign up illustration"
                         className="mx-auto mt-10 w-60 drop-shadow-2xl"
                     />
-                    <div className="mt-10 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-white/10 backdrop-blur">
+                    <div className="mt-10 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm bg-gray-300 text-black backdrop-blur">
                         <span className=".brandColor font-medium">No credit card required</span>
                     </div>
                 </div>

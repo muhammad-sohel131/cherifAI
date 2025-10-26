@@ -2,9 +2,8 @@ import logo from "@/public/logo_full.png";
 import Link from "next/link";
 
 import Spiner from "@/components/ui/dashboard/Spiner";
-import deleteCookie from "@/utils/deleteCookie";
-import getToken from "@/utils/getTokenFromCookie";
 import { createData } from "@/utils/reqres";
+import Cookies from "js-cookie";
 import {
     Bot,
     Building2,
@@ -20,7 +19,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 
@@ -31,6 +30,8 @@ function Sidebar({ open, onClose }) {
     const pathname = usePathname();
     const router = useRouter();
     const [isLoading, setisLoading] = useState(false);
+    const [token, setToken] = useState(null);
+
     const items = useMemo(
         () => [
             { icon: PanelsTopLeft, label: "Dashboard", href: "/dashboard" },
@@ -49,8 +50,16 @@ function Sidebar({ open, onClose }) {
 
 
 
-    //get cookie token from cookie
-    const token = getToken();
+
+
+
+
+    useEffect(() => {
+        const userToken = Cookies.get("token");
+        setToken(userToken);
+    }, []);
+
+
 
 
 
@@ -62,7 +71,9 @@ function Sidebar({ open, onClose }) {
         try {
             const res = await createData('api/auth/logout', {}, token);
 
-            deleteCookie('token');
+            // Remove a cookie by name
+            Cookies.remove("token", { path: "/" });
+
             router.push('/auth/signin');
 
 
@@ -75,8 +86,6 @@ function Sidebar({ open, onClose }) {
 
 
     }
-
-
 
 
 
