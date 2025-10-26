@@ -13,7 +13,6 @@ import {
     FileText,
     Home,
     LineChart,
-    Lock,
     PanelsTopLeft,
     Plus,
     Wallet,
@@ -37,13 +36,13 @@ function Sidebar({ open, onClose }) {
             { icon: PanelsTopLeft, label: "Dashboard", href: "/dashboard" },
             { icon: LineChart, label: "Deal Analyzer", href: "/dashboard/deals" },
             { icon: Plus, label: "Add Property", href: "/dashboard/addproperty" },
+            { icon: Building2, label: "Properties", href: "/dashboard/properties" },
             { icon: Wallet, label: "Funding Finder", href: "/dashboard/funding" },
             { icon: FileText, label: "Blueprints", href: "/dashboard/blueprints" },
-            { icon: Building2, label: "Properties", href: "/dashboard/properties" },
             { icon: ChartBarStacked, label: "Market Watch", href: "/dashboard/market" },
             { icon: Home, label: "Mortgage", href: "/dashboard/mortgage" },
             { icon: Bot, label: "CherifAI", href: "/dashboard/chat" },
-            { icon: Lock, label: "Vault", href: "/dashboard/vault" },
+            // { icon: Lock, label: "Vault", href: "/dashboard/vault" },
         ],
         []
     );
