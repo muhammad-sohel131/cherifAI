@@ -38,9 +38,14 @@ export default function SignInPage() {
             // cokkie set
             document.cookie = `token=${data?.token}; path=/;`;
 
-            console.log(data);
+            toast.success("Signed in successfully!");
 
-            router.push("/dashboard");
+            setTimeout(() => {
+                router.push("/dashboard");
+            }, 800);
+
+
+
 
         } catch (err) {
             toast(err.message || "Something went wrong");
