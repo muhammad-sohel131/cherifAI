@@ -40,7 +40,14 @@ export default function SignInPage() {
             // cokkie set
             Cookies.set("token", data?.token, { path: "/", secure: true, sameSite: "Lax" });
 
-            router.push("/dashboard");
+
+            toast.success("Signed in successfully!");
+
+
+            // force hard reload (cookie definitely available)
+            setTimeout(() => {
+                window.location.href = "/dashboard";
+            }, 700);
 
 
         } catch (err) {
@@ -73,7 +80,7 @@ export default function SignInPage() {
                     <Link className='flex justify-center w-full mb-8' href={'/'}>
                         <Image className='w-[120px]' src={logo} alt="logo" />
                     </Link>
-                    <h1 className="text-4xl font-bold tracking-tight">Welcome Back</h1>
+                    <h1 className="text-4xl text-white font-bold tracking-tight">Welcome Back</h1>
                     <p className="mt-4 text-white/80">
                         Sign in to continue your journey. Track progress, unlock badges, and keep learning.
                     </p>
