@@ -1,4 +1,5 @@
 import AIChatPreview from "@/components/home/AIChatPreview";
+import AIPropertyRecommender from "@/components/home/AIPropertyRecommender";
 import AnalyzerSection from "@/components/home/AnalayzarSection";
 import HeroSection from "@/components/home/HeroSection";
 import MarketInsight from "@/components/home/MarketInsight";
@@ -27,6 +28,7 @@ function Home() {
       <AIChatPreview />
       <MarketInsight />
       <MortgageCalculatorCTA />
+      <AIPropertyRecommender />
       <TrustedPartners />
     </div>
   )
