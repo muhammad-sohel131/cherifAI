@@ -1,14 +1,23 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --brandColor: #04d2f0;
   --primaryBlack: #040717;
   --primaryBlackforhover: #080b20;
   --primaryWhite: #ffffff;
   --primaryWhiteForHover: rgb(226, 226, 226);
   --borderColor: #3c3c3c;
-}
+} */
 
+:root {
+  --brandColor: #008E8C;
+  --secondaryAccent: #00E5FF;
+  --primaryBlack: #040717;
+  --primaryBlackforhover: #080B20;
+  --primaryWhite: #FFFFFF;
+  --primaryWhiteForHover: rgb(226, 226, 226);
+  --borderColor: #3C3C3C;
+}
 
 body {
   background: var(--primaryBlack);
