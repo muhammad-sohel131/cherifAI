@@ -90,7 +90,7 @@ const logos = [
         </motion.div>
 
         {/* Animated counters - diagonal grid layout */}
-        <div className="relative md:grid md:grid-cols-3 flex flex-col items-center gap-12 md:gap-8 mb-24">
+        <div className="relative flex flex-col md:flex-row items-center justify-between mb-24 gap-8">
           {[
             {
               value: `${stats.properties.toLocaleString()}+`,
@@ -135,7 +135,7 @@ const logos = [
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          className="relative mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-5 gap-8 justify-center"
+          className="relative mx-auto max-w-5xl flex flex-col md:flex-row  justify-between gap-8"
         >
           {logos.map((logo, i) => (
             <motion.div

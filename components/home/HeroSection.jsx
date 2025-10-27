@@ -7,23 +7,50 @@ export default function Hero() {
   const [hovered, setHovered] = useState(false);
   const [displayText, setDisplayText] = useState("");
 
-  // Typing animation text
-  const aiText = "Empowering Real Estate with Intelligence.";
+  // === Rotating brand lines for typing animation ===
+  const aiTexts = [
+    "Empowering Real Estate with Intelligence.",
+    "Predict • Analyze • Invest — Smarter with AI.",
+    "Turning Property Data into Decisions.",
+    "Where Machine Learning Meets Market Insight.",
+  ];
+
   useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayText(aiText.slice(0, i));
-      i++;
-      if (i > aiText.length) clearInterval(interval);
-    }, 70);
-    return () => clearInterval(interval);
+    let i = 0; // text index
+    let j = 0; // character index
+    let currentText = "";
+    let deleting = false;
+
+    const type = () => {
+      if (!deleting && j < aiTexts[i].length) {
+        currentText += aiTexts[i][j];
+        j++;
+        setDisplayText(currentText);
+      } else if (deleting && j > 0) {
+        currentText = currentText.slice(0, j - 1);
+        j--;
+        setDisplayText(currentText);
+      } else if (!deleting && j === aiTexts[i].length) {
+        deleting = true;
+        setTimeout(type, 1500); // pause before delete
+        return;
+      } else if (deleting && j === 0) {
+        deleting = false;
+        i = (i + 1) % aiTexts.length;
+      }
+      setTimeout(type, deleting ? 40 : 70);
+    };
+
+    type();
+    return () => {};
   }, []);
 
-  // Parallax tilt
+  // === Parallax tilt ===
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-200, 200], [15, -15]);
   const rotateY = useTransform(x, [-200, 200], [-15, 15]);
+
   const handleMouseMove = (e) => {
     const { innerWidth, innerHeight } = window;
     x.set(e.clientX - innerWidth / 2);
@@ -45,7 +72,7 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--primaryBlack)]/90 via-[var(--primaryBlackforhover)]/85 to-transparent z-[1]" />
 
-      {/* Animated blobs */}
+      {/* Animated glowing blobs */}
       <motion.div
         className="absolute top-20 left-[-100px] w-[400px] h-[400px] rounded-full blur-[140px] bg-[var(--brandColor)] opacity-30"
         animate={{ x: [0, 120, 0], y: [0, 60, 0], opacity: [0.3, 0.6, 0.3] }}
@@ -59,22 +86,19 @@ export default function Hero() {
 
       {/* Container */}
       <div className="container mx-auto relative z-[2] flex flex-col md:flex-row items-center justify-between px-6 md:px-10">
-        {/* LEFT SIDE */}
+        {/* LEFT CONTENT */}
         <div className="flex-1 max-w-xl space-y-8 text-center md:text-left">
-          {/* Animated Title */}
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="relative text-5xl md:text-6xl font-extrabold leading-tight tracking-tight"
           >
-            {/* Glowing accent line */}
             <motion.div
               animate={{ opacity: [0.2, 0.8, 0.2], scaleX: [0.8, 1, 0.8] }}
               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
               className="absolute -bottom-2 left-0 w-[180px] h-[3px] bg-gradient-to-r from-[var(--brandColor)] to-transparent rounded-full"
             />
-
             <span className="bg-gradient-to-r from-[var(--brandColor)] to-[#00eaff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(4,210,240,0.4)]">
               Cherif AI
             </span>
@@ -88,7 +112,6 @@ export default function Hero() {
               Revolutionizing{" "}
               <span className="relative">
                 Real Estate
-                {/* Shimmer underline */}
                 <motion.span
                   animate={{ x: ["-100%", "200%"] }}
                   transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
@@ -98,9 +121,9 @@ export default function Hero() {
             </motion.span>
           </motion.h1>
 
-          {/* Typing animated text */}
+          {/* Multi-line Typing Animation */}
           <motion.p
-            className="text-lg md:text-xl text-gray-300 font-light leading-relaxed"
+            className="text-lg md:text-xl text-gray-300 font-light leading-relaxed h-[1.5em]"
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
           >
@@ -114,7 +137,7 @@ export default function Hero() {
             </motion.span>
           </motion.p>
 
-          {/* CTA buttons */}
+          {/* Buttons */}
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
             <Link
               href="/analyze"
@@ -131,7 +154,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT SIDE - 3D Animated Image */}
+        {/* RIGHT SIDE */}
         <motion.div
           style={{ rotateX, rotateY }}
           className="flex-1 flex justify-end mt-14 md:mt-0"
@@ -141,7 +164,7 @@ export default function Hero() {
             onHoverEnd={() => setHovered(false)}
             animate={{ scale: hovered ? 1.05 : 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative w-[320px] h-[400px] md:w-[360px] md:h-[460px] rounded-[22px] overflow-hidden border border-[var(--borderColor)] shadow-[0_0_45px_rgba(4,210,240,0.35)]"
+            className="relative w-[320px] h-[400px] md:w-[460px] md:h-[460px] rounded-[22px] overflow-hidden border border-[var(--borderColor)] shadow-[0_0_45px_rgba(4,210,240,0.35)]"
           >
             <motion.img
               src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1000&q=80"
