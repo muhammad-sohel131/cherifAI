@@ -24,23 +24,15 @@ function TopNav({ onMenu }) {
     const [isLoading, setisLoading] = useState(false);
     const router = useRouter();
 
-
-
-
     useEffect(() => {
         const userToken = Cookies.get("token");
         setToken(userToken);
     }, []);
 
-
-
-
     //handle logout function is here
     const handleLogout = async (e) => {
-
         e.preventDefault();
         setisLoading(true);
-
         try {
             const res = await createData('api/auth/logout', {}, token);
 
@@ -53,22 +45,7 @@ function TopNav({ onMenu }) {
         } finally {
             setisLoading(false);
         }
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <nav className="sticky top-0 z-40 w-full myborderBottom bg-neutral-900 ">
